@@ -18,13 +18,13 @@ public class RoverTest {
 
     @Test
     public void shouldRecieveInstructionToRotateClockwise(){
-        rover.RotateClockwise();
+        rover.rotateClockwise();
         assertEquals("0 0 E", rover.reportPosition());
     }
 
     @Test
     public void shouldRecieveInstructionToRotateAntiClockwise(){
-        rover.RotateAntiClockwise();
+        rover.rotateAntiClockwise();
         assertEquals("0 0 W", rover.reportPosition());
     }
 

@@ -11,11 +11,11 @@ public class Rover {
         return this.position.toString() + " " + this.facing.toString();
     }
 
-    public void RotateClockwise() {
+    public void rotateClockwise() {
         this.facing.rotateClockwise();
     }
 
-    public void RotateAntiClockwise() {
+    public void rotateAntiClockwise() {
         this.facing.rotateAntiClockwise();
     }
 
