@@ -18,4 +18,8 @@ public class Rover {
     public void RotateAntiClockwise() {
         this.facing.rotateAntiClockwise();
     }
+
+    public void moveForward() {
+        this.position.moveInDirection(this.facing);
+    }
 }
