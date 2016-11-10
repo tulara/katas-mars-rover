@@ -1,13 +1,14 @@
 package rover;
 
 import direction.Direction;
+import plateau.Plateau;
 
 public class Rover {
     private Position position;
     private Direction facing;
 
-    public Rover(int x, int y, char directionFacing) {
-        this.position  = new Position(x,y);
+    public Rover(int x, int y, char directionFacing, Plateau plateau) {
+        this.position  = new Position(x,y, plateau);
         this.facing = new Direction(directionFacing);
     }
 
@@ -25,5 +26,9 @@ public class Rover {
 
     public void moveForward() {
         this.facing.moveForward(this.position);
+    }
+
+    public Position getPosition() {
+        return position;
     }
 }

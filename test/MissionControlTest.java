@@ -19,11 +19,19 @@ public class MissionControlTest {
 
     @Test
     public void shouldMoveRoverAround(){
-        String data = "1 2 N\r\nLMLMLMLMM";
+        String data = "5 5\r\n1 2 N\r\nLMLMLMLMM";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
 
         MissionControl.main(new String[]{});
         assertEquals("1 3 N", output.toString());
+    }
+
+    @Test
+    public void shouldNotMoveBeyondBoundaries(){
+        String data = "5 5\r\n0 0 N\r\nLM";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        MissionControl.main(new String[]{});
+        assertEquals("0 0 W", output.toString());
     }
 
     @After

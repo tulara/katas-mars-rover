@@ -1,15 +1,17 @@
 import org.junit.Before;
 import org.junit.Test;
+import plateau.Plateau;
 import rover.Rover;
 
 import static org.junit.Assert.*;
 
 public class RoverTest {
     private Rover rover;
+    private Plateau plateau = new Plateau(5,5);
 
     @Before
     public void setup(){
-        rover = new Rover(0, 0, 'N');
+        rover = new Rover(0, 0, 'N', plateau);
     }
 
     @Test

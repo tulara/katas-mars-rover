@@ -1,28 +1,44 @@
 package rover;
 
+import plateau.Plateau;
+
 public class Position {
     private int x;
     private int y;
+    private Plateau boundary;
 
-    public Position(int x, int y){
+    public Position(int x, int y, Plateau plateau){
         this.x = x;
         this.y = y;
+        this.boundary = plateau;
     }
 
     public void moveUp(){
-        this.y += 1;
+        int newY = this.y + 1;
+        if(this.boundary.isInsideBoundary(this.x, newY)){
+            this.y += 1;
+        }
     }
 
     public void moveDown(){
-        this.y -=1;
+        int newY = this.y - 1;
+        if(this.boundary.isInsideBoundary(this.x, newY)){
+            this.y -= 1;
+        }
     }
 
     public void moveLeft(){
-        this.x -= 1;
+        int newX = this.x - 1;
+        if(this.boundary.isInsideBoundary(newX, this.y)){
+            this.x -= 1;
+        }
     }
 
     public void moveRight(){
-        this.x += 1;
+        int newX = this.x + 1;
+        if(this.boundary.isInsideBoundary(newX, this.y)){
+            this.x += 1;
+        }
     }
 
     @Override

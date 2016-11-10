@@ -1,14 +1,14 @@
 package direction;
 
-import direction.Direction;
 import org.junit.Test;
+import plateau.Plateau;
 import rover.Position;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class DirectionTest {
-
     private Direction direction;
+    private Plateau plateau = new Plateau(5,5);;
 
     @Test
     public void shouldPrintCurrentDirection(){
@@ -47,7 +47,7 @@ public class DirectionTest {
     @Test
     public void shouldAlterPositionUpWhenDirectionIsNorth(){
         direction = new Direction('N');
-        Position position = new Position(0,0);
+        Position position = new Position(0,0, plateau);
         direction.moveForward(position);
         assertEquals("0 1", position.toString());
     }
@@ -55,7 +55,7 @@ public class DirectionTest {
     @Test
     public void shouldAlterPositionDownWhenDirectionIsSouth(){
         direction = new Direction('S');
-        Position position = new Position(0,1);
+        Position position = new Position(0,1, plateau);
         direction.moveForward(position);
         assertEquals("0 0", position.toString());
     }
@@ -63,7 +63,7 @@ public class DirectionTest {
     @Test
     public void shouldAlterPositionLeftWhenDirectionIsEast(){
         direction = new Direction('E');
-        Position position = new Position(0,0);
+        Position position = new Position(0,0, plateau);
         direction.moveForward(position);
         assertEquals("1 0", position.toString());
     }
@@ -71,7 +71,7 @@ public class DirectionTest {
     @Test
     public void shouldAlterPositionRightWhenDirectionIsWest(){
         direction = new Direction('W');
-        Position position = new Position(1,0);
+        Position position = new Position(1,0, plateau);
         direction.moveForward(position);
         assertEquals("0 0", position.toString());
     }
