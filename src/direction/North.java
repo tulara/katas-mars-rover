@@ -2,7 +2,7 @@ package direction;
 
 import rover.Position;
 
-public class North implements IMoveForward {
+public class North implements Moveable {
 
     @Override
     public void moveForward(Position position) {

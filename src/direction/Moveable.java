@@ -2,7 +2,7 @@ package direction;
 
 import rover.Position;
 
-public interface IMoveForward {
+public interface Moveable {
     void moveForward(Position position);
     char symbol();
 }

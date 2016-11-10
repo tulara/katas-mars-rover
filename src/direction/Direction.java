@@ -4,7 +4,7 @@ import rover.Position;
 
 public class Direction {
     private String directions = "NESW";
-    private IMoveForward direction;
+    private Moveable direction;
 
     public Direction(char direction){
         updateMovingDirection(direction);
