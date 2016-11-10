@@ -16,5 +16,12 @@ public class Direction {
         int nextIndex = (currentIndex + 1)% 4;
         this.direction = directions.charAt(nextIndex);
     }
+
+    public void rotateAntiClockwise() {
+        int currentIndex = directions.indexOf(this.direction);
+        if(currentIndex == 0){currentIndex = 4;}
+        int nextIndex = (currentIndex - 1);
+        this.direction = directions.charAt(nextIndex);
+    }
 }
 

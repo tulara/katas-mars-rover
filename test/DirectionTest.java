@@ -26,4 +26,19 @@ public class DirectionTest {
         direction.rotateClockwise();
         assertEquals("N", direction.toString());
     }
+
+    @Test
+    public void shouldFaceSouthWhenRotatingAntiClockwiseFromWest(){
+        direction = new Direction('W');
+        direction.rotateAntiClockwise();
+        assertEquals("S", direction.toString());
+    }
+
+    @Test
+    public void shouldFaceWestWhenRotatingAntiClockwiseFromNorth(){
+        direction = new Direction('N');
+        direction.rotateAntiClockwise();
+        assertEquals("W", direction.toString());
+    }
+
 }

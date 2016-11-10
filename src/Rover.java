@@ -15,4 +15,7 @@ public class Rover {
         this.facing.rotateClockwise();
     }
 
+    public void RotateAntiClockwise() {
+        this.facing.rotateAntiClockwise();
+    }
 }
