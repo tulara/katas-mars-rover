@@ -1,3 +1,7 @@
+package rover;
+
+import direction.Direction;
+
 public class Rover {
     private Position position;
     private Direction facing;
@@ -20,6 +24,6 @@ public class Rover {
     }
 
     public void moveForward() {
-        this.position.moveInDirection(this.facing);
+        this.facing.moveForward(this.position);
     }
 }

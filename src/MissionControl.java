@@ -1,3 +1,5 @@
+import rover.Rover;
+
 import java.util.Scanner;
 
 public class MissionControl {

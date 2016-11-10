@@ -1,9 +1,9 @@
 import org.junit.Test;
+import rover.Position;
 
 import static org.junit.Assert.assertEquals;
 
 public class PositionTest {
-
     private Position position;
 
     @Test
@@ -13,30 +13,30 @@ public class PositionTest {
     }
 
     @Test
-    public void shouldMoveYAxisUpWhenAskedToMoveForwardNorth(){
+    public void shouldMoveYAxisUp(){
         position = new Position(0, 0);
-        position.moveInDirection(new Direction('N'));
+        position.moveUp();
         assertEquals("0 1", position.toString());
     }
 
     @Test
-    public void shouldMoveYAxisDownWhenAskedToMoveForwardSouth(){
+    public void shouldMoveYAxisDown(){
         position = new Position(0, 1);
-        position.moveInDirection(new Direction('S'));
+        position.moveDown();
         assertEquals("0 0", position.toString());
     }
 
     @Test
-    public void shouldMoveXAxisLeftWhenAskedToMoveForwardEast(){
+    public void shouldMoveXAxisRight(){
         position = new Position(0, 0);
-        position.moveInDirection(new Direction('E'));
+        position.moveRight();
         assertEquals("1 0", position.toString());
     }
 
     @Test
-    public void shouldMoveXAxisRightWhenAskedToMoveForwardWest(){
+    public void shouldMoveXAxisLeft(){
         position = new Position(1, 0);
-        position.moveInDirection(new Direction('W'));
+        position.moveLeft();
         assertEquals("0 0", position.toString());
     }
 }

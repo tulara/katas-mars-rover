@@ -1,5 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
+import rover.Rover;
 
 import static org.junit.Assert.*;
 

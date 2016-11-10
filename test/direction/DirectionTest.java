@@ -1,5 +1,8 @@
-import org.junit.Before;
+package direction;
+
+import direction.Direction;
 import org.junit.Test;
+import rover.Position;
 
 import static org.junit.Assert.*;
 
@@ -41,4 +44,35 @@ public class DirectionTest {
         assertEquals("W", direction.toString());
     }
 
+    @Test
+    public void shouldAlterPositionUpWhenDirectionIsNorth(){
+        direction = new Direction('N');
+        Position position = new Position(0,0);
+        direction.moveForward(position);
+        assertEquals("0 1", position.toString());
+    }
+
+    @Test
+    public void shouldAlterPositionDownWhenDirectionIsSouth(){
+        direction = new Direction('S');
+        Position position = new Position(0,1);
+        direction.moveForward(position);
+        assertEquals("0 0", position.toString());
+    }
+
+    @Test
+    public void shouldAlterPositionLeftWhenDirectionIsEast(){
+        direction = new Direction('E');
+        Position position = new Position(0,0);
+        direction.moveForward(position);
+        assertEquals("1 0", position.toString());
+    }
+
+    @Test
+    public void shouldAlterPositionRightWhenDirectionIsWest(){
+        direction = new Direction('W');
+        Position position = new Position(1,0);
+        direction.moveForward(position);
+        assertEquals("0 0", position.toString());
+    }
 }
