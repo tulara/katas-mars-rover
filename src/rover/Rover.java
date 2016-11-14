@@ -1,15 +1,19 @@
 package rover;
 
+import command.Command;
+import command.CommandParser;
 import direction.Direction;
 import plateau.Plateau;
 
 public class Rover {
     private Position position;
     private Direction facing;
+    private CommandParser commandParser;
 
-    public Rover(int x, int y, char directionFacing, Plateau plateau) {
-        this.position  = new Position(x,y, plateau);
-        this.facing = new Direction(directionFacing);
+    public Rover(Position initialPosition, Direction initialDirection, CommandParser commandParser) {
+        this.position  = initialPosition;
+        this.facing = initialDirection;
+        this.commandParser = commandParser;
     }
 
     public String reportPosition() {
@@ -26,5 +30,12 @@ public class Rover {
 
     public void moveForward() {
         this.facing.moveForward(this.position);
+    }
+
+    public void executeCommands(char[] instructionSet) {
+        for(Character instruction : instructionSet){
+            Command command = commandParser.Parse(instruction);
+            command.execute(this);
+        }
     }
 }

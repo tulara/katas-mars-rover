@@ -1,38 +1,40 @@
+import command.*;
+import direction.Direction;
 import plateau.Plateau;
+import rover.Position;
 import rover.Rover;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class MissionControl {
-    private static Plateau plateau;
+
+    private static Map<Character, Command> roverProtocol;
+    static {
+        roverProtocol = new HashMap<>();
+        roverProtocol.put('L', new TurnLeft());
+        roverProtocol.put('R', new TurnRight());
+        roverProtocol.put('M', new MoveForward());
+    }
 
     public static void main(String[] args) {
+        CommandParser commandParser = new CommandParser(roverProtocol);
         Scanner in = new Scanner(System.in);
         int maxx = in.nextInt();
         int maxy = in.nextInt();
-        plateau = new Plateau(maxx, maxy);
+        Plateau plateau = new Plateau(maxx, maxy);
 
         int x = in.nextInt();
         int y = in.nextInt();
         String directionFacing  = in.next();
-        Rover rover = new Rover(x, y, directionFacing.charAt(0), plateau);
 
-        String instructions = in.next();
-        issueInstructions(rover, instructions.toCharArray());
+        Position initialPosition = new Position(x, y, plateau);
+        Direction initialDirection = new Direction(directionFacing.charAt(0));
+        Rover rover = new Rover(initialPosition, initialDirection, commandParser);
+
+        String commands = in.next();
+        rover.executeCommands(commands.toCharArray());
         System.out.print(rover.reportPosition());
-    }
-
-    private static void issueInstructions(Rover rover, char[] instructionSet){
-        for (char c: instructionSet){
-            if(c == 'L'){
-                rover.rotateAntiClockwise();
-            }
-            else if (c == 'R'){
-                rover.rotateClockwise();
-            }
-            else if (c == 'M'){
-                rover.moveForward();
-            }
-        }
     }
 }
