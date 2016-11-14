@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 public class DirectionTest {
     private Direction direction;
-    private Plateau plateau = new Plateau(5,5);;
+    private Plateau plateau = new Plateau(5,5);
 
     @Test
     public void shouldPrintCurrentDirection(){

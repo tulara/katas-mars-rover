@@ -27,8 +27,4 @@ public class Rover {
     public void moveForward() {
         this.facing.moveForward(this.position);
     }
-
-    public Position getPosition() {
-        return position;
-    }
 }
