@@ -24,7 +24,12 @@ public class MissionControl {
         int maxx = in.nextInt();
         int maxy = in.nextInt();
         Plateau plateau = new Plateau(maxx, maxy);
+        while(in.hasNext()) {
+            issueCommandsToNewRover(commandParser, in, plateau);
+        }
+    }
 
+    private static void issueCommandsToNewRover(CommandParser commandParser, Scanner in, Plateau plateau) {
         int x = in.nextInt();
         int y = in.nextInt();
         String directionFacing  = in.next();
@@ -35,6 +40,6 @@ public class MissionControl {
 
         String commands = in.next();
         rover.executeCommands(commands.toCharArray());
-        System.out.print(rover.reportPosition());
+        System.out.println(rover.reportPosition());
     }
 }

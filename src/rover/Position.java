@@ -5,38 +5,38 @@ import plateau.Plateau;
 public class Position {
     private int x;
     private int y;
-    private Plateau boundary;
+    private Plateau plateau;
 
     public Position(int x, int y, Plateau plateau){
         this.x = x;
         this.y = y;
-        this.boundary = plateau;
+        this.plateau = plateau;
     }
 
     public void moveUp(){
         int newY = this.y + 1;
-        if(this.boundary.isInsideBoundary(this.x, newY)){
+        if(this.plateau.isInsideBoundary(this.x, newY)){
             this.y += 1;
         }
     }
 
     public void moveDown(){
         int newY = this.y - 1;
-        if(this.boundary.isInsideBoundary(this.x, newY)){
+        if(this.plateau.isInsideBoundary(this.x, newY)){
             this.y -= 1;
         }
     }
 
     public void moveLeft(){
         int newX = this.x - 1;
-        if(this.boundary.isInsideBoundary(newX, this.y)){
+        if(this.plateau.isInsideBoundary(newX, this.y)){
             this.x -= 1;
         }
     }
 
     public void moveRight(){
         int newX = this.x + 1;
-        if(this.boundary.isInsideBoundary(newX, this.y)){
+        if(this.plateau.isInsideBoundary(newX, this.y)){
             this.x += 1;
         }
     }

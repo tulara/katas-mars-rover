@@ -3,7 +3,6 @@ package rover;
 import command.Command;
 import command.CommandParser;
 import direction.Direction;
-import plateau.Plateau;
 
 public class Rover {
     private Position position;

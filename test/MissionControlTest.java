@@ -23,7 +23,7 @@ public class MissionControlTest {
         System.setIn(new ByteArrayInputStream(data.getBytes()));
 
         MissionControl.main(new String[]{});
-        assertEquals("1 3 N", output.toString());
+        assertEquals("1 3 N\r\n", output.toString());
     }
 
     @Test
@@ -31,7 +31,23 @@ public class MissionControlTest {
         String data = "5 5\r\n0 0 N\r\nLM";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         MissionControl.main(new String[]{});
-        assertEquals("0 0 W", output.toString());
+        assertEquals("0 0 W\r\n", output.toString());
+    }
+
+    @Test
+    public void shouldMoveTwoRoversAround(){
+        String input = "20 20\r\n0 0 E\r\nMLMMRMRM\r\n0 0 N\r\nMRMLMM";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        MissionControl.main(new String[]{});
+        assertEquals("2 1 S\r\n1 3 N\r\n", output.toString());
+    }
+
+    @Test
+    public void shouldNotMoveThroughRoverIfTwoRoversAreAtSamePosition(){
+        String input = "20 20\r\n0 0 E\r\nMLMRM\r\n0 0 N\r\nMRMM";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        MissionControl.main(new String[]{});
+        assertEquals("2 1 E\r\n1 1 E", output.toString());
     }
 
     @After
