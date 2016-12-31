@@ -2,27 +2,25 @@ package direction;
 
 import rover.Position;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Direction {
     private String directions = "NESW";
+    private Map<Character, Moveable> moveables;
     private Moveable direction;
 
     public Direction(char direction){
+        moveables = new HashMap<>();
+        moveables.put('N', new North());
+        moveables.put('E', new East());
+        moveables.put('S', new South());
+        moveables.put('W', new West());
         updateMovingDirection(direction);
     }
 
     private void updateMovingDirection(char direction) {
-        if(direction == 'N'){
-            this.direction = new North();
-        }
-        else if(direction == 'S'){
-            this.direction = new South();
-        }
-        else if(direction == 'E'){
-            this.direction = new East();
-        }
-        else if(direction == 'W'){
-            this.direction = new West();
-        }
+        this.direction = moveables.get(direction);
     }
 
     @Override
