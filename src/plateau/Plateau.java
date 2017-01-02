@@ -16,11 +16,11 @@ public class Plateau {
         blockedPositions = new ArrayList<>();
     }
 
-    public boolean isInsideBoundary(int x, int y) {
-        if(x > this.maxX
-                || x < 0
-                || y > this.maxY
-                || y < 0 ){
+    public boolean isInsideBoundary(Coordinates coordinates) {
+        if(coordinates.getX() > this.maxX
+                || coordinates.getX() < 0
+                || coordinates.getY() > this.maxY
+                || coordinates.getY() < 0 ){
             return false;
         }
         else return true;
@@ -34,4 +34,14 @@ public class Plateau {
     public boolean coordinatesAreBlocked(Position position){
         return blockedPositions.contains(position);
     }
+
+//    public Position getNewPosition(Position currentPosition, Position intendedPosition){
+//
+//        if(isInsideBoundary(intendedPosition)
+//                & !coordinatesAreBlocked(intendedPosition)) {
+//            updatePosition(currentPosition, intendedPosition);
+//            return intendedPosition;
+//        }
+//        return currentPosition;
+//    }
 }

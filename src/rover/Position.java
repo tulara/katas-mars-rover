@@ -1,5 +1,6 @@
 package rover;
 
+import plateau.Coordinates;
 import plateau.Plateau;
 
 public class Position {
@@ -16,7 +17,7 @@ public class Position {
     public void moveUp(){
         int newY = this.y + 1;
         Position intendedPosition = new Position(this.x, newY, plateau);
-        if(plateau.isInsideBoundary(this.x, newY)
+        if(plateau.isInsideBoundary(new Coordinates(this.x, newY))
                 & !plateau.coordinatesAreBlocked(intendedPosition)){
             plateau.updatePosition(this, intendedPosition);
             this.y += 1;
@@ -26,7 +27,7 @@ public class Position {
     public void moveDown(){
         int newY = this.y - 1;
         Position intendedPosition = new Position(this.x, newY, plateau);
-        if(plateau.isInsideBoundary(this.x, newY)
+        if(plateau.isInsideBoundary(new Coordinates(this.x, newY))
                 & !plateau.coordinatesAreBlocked(intendedPosition)){
             plateau.updatePosition(this, intendedPosition);
             this.y -= 1;
@@ -36,7 +37,7 @@ public class Position {
     public void moveLeft(){
         int newX = this.x - 1;
         Position intendedPosition = new Position(newX, this.y, plateau);
-        if(plateau.isInsideBoundary(newX, this.y)
+        if(plateau.isInsideBoundary(new Coordinates(newX, this.y))
                 & !plateau.coordinatesAreBlocked(intendedPosition)){
             plateau.updatePosition(this, intendedPosition);
             this.x -= 1;
@@ -44,11 +45,10 @@ public class Position {
     }
 
     public void moveRight(){
-        //
-        // this.coordinates = plateau.update(old, new);? mutates state?
+
         int newX = this.x + 1;
-        Position intendedPosition= new Position(newX, this.y, plateau);
-        if(this.plateau.isInsideBoundary(newX, this.y)
+        Position intendedPosition = new Position(newX, this.y, plateau);
+        if(this.plateau.isInsideBoundary(new Coordinates(newX, this.y))
                 & !plateau.coordinatesAreBlocked(intendedPosition)){
             plateau.updatePosition(this, intendedPosition);
             this.x += 1;

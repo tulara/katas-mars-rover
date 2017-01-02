@@ -1,5 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
+import plateau.Coordinates;
 import plateau.Plateau;
 import rover.Position;
 
@@ -15,17 +16,20 @@ public class PlateauTest {
 
     @Test
     public void shouldReturnTrueIfPositionIsInsideBounds(){
-        assertTrue(plateau.isInsideBoundary(1, 1));
+        Coordinates coordinates = new Coordinates(1, 1);
+        assertTrue(plateau.isInsideBoundary(coordinates));
     }
 
     @Test
     public void shouldReturnOutOfBoundsWhenNegative(){
-        assertFalse(plateau.isInsideBoundary(-1, 0));
+        Coordinates coordinates = new Coordinates(-1, 0);
+        assertFalse(plateau.isInsideBoundary(coordinates));
     }
 
     @Test
     public void shouldReturnOutOfBoundsWhenExceedsMaximumPosition(){
-        assertFalse(plateau.isInsideBoundary(0, 6));
+        Coordinates coordinates = new Coordinates(0, 6);
+        assertFalse(plateau.isInsideBoundary(coordinates));
     }
 
     @Test
@@ -46,4 +50,11 @@ public class PlateauTest {
         plateau.updatePosition(oldPosition,blockedPosition);
         assertFalse(plateau.coordinatesAreBlocked(unblockedPosition));
     }
+
+//    @Test
+//    public void shouldReturnNewPositionThatIsInsideBoundariesAndNotBlocked(){
+//
+//
+//        plateau.getNewPosition(oldPosition, intendedPosition);
+//    }
 }
