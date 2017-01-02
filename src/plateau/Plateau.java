@@ -8,7 +8,7 @@ import java.util.List;
 public class Plateau {
     int maxX;
     int maxY;
-    List<Position> blockedPositions;
+    List<Coordinates> blockedPositions;
 
     public Plateau(int x, int y){
         this.maxX = x;
@@ -26,22 +26,21 @@ public class Plateau {
         else return true;
     }
 
-    public void updatePosition(Position oldPosition, Position newPosition){
+    public void updatePosition(Coordinates oldPosition, Coordinates newPosition){
         blockedPositions.remove(oldPosition);
         blockedPositions.add(newPosition);
     }
 
-    public boolean coordinatesAreBlocked(Position position){
+    public boolean coordinatesAreBlocked(Coordinates position){
         return blockedPositions.contains(position);
     }
 
-//    public Position getNewPosition(Position currentPosition, Position intendedPosition){
-//
-//        if(isInsideBoundary(intendedPosition)
-//                & !coordinatesAreBlocked(intendedPosition)) {
-//            updatePosition(currentPosition, intendedPosition);
-//            return intendedPosition;
-//        }
-//        return currentPosition;
-//    }
+    public Coordinates getNewPosition(Coordinates currentPosition, Coordinates intendedPosition){
+        if(isInsideBoundary(intendedPosition)
+                & !coordinatesAreBlocked(intendedPosition)) {
+            updatePosition(currentPosition, intendedPosition);
+            return intendedPosition;
+        }
+        return currentPosition;
+    }
 }

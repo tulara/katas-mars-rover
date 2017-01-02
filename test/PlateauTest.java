@@ -34,27 +34,29 @@ public class PlateauTest {
 
     @Test
     public void shouldBlockAPositionOnThePlateau(){
-        // passing plateau to position is weird
-        Position oldPosition = new Position(0, 1, plateau);
-        Position position = new Position(1, 1, plateau);
+        Coordinates oldPosition = new Coordinates(0, 1);
+        Coordinates position = new Coordinates(1, 1);
         plateau.updatePosition(oldPosition, position);
         assertTrue(plateau.coordinatesAreBlocked(position));
     }
 
     @Test
     public void OnlyBlockedPositionsShouldBeBlocked(){
-        // passing plateau to position is weird
-        Position oldPosition = new Position(0, 1, plateau);
-        Position blockedPosition = new Position(1, 1, plateau);
-        Position unblockedPosition = new Position(2, 2, plateau);
+        Coordinates oldPosition = new Coordinates(0, 1);
+        Coordinates blockedPosition = new Coordinates(1, 1);
+        Coordinates unblockedPosition = new Coordinates(2, 2);
+
         plateau.updatePosition(oldPosition,blockedPosition);
+
         assertFalse(plateau.coordinatesAreBlocked(unblockedPosition));
     }
 
-//    @Test
-//    public void shouldReturnNewPositionThatIsInsideBoundariesAndNotBlocked(){
-//
-//
-//        plateau.getNewPosition(oldPosition, intendedPosition);
-//    }
+    @Test
+    public void shouldReturnNewPositionThatIsInsideBoundariesAndNotBlocked(){
+        Coordinates oldPosition = new Coordinates(0,0);
+        Coordinates newPosition = new Coordinates(0, 1);
+
+        Coordinates validPosition = plateau.getNewPosition(oldPosition, newPosition);
+        assertEquals(newPosition, validPosition);
+    }
 }

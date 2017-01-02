@@ -1,4 +1,6 @@
+import javafx.geometry.Pos;
 import org.junit.Test;
+import plateau.Coordinates;
 import plateau.Plateau;
 import rover.Position;
 
@@ -52,18 +54,17 @@ public class PositionTest {
 
     @Test
     public void shouldNotMoveIfNewPositionIsBlocked(){
-        Position oldPosition = new Position(0, 1, plateau);
-        Position newPosition = new Position(1, 1, plateau);
-        plateau.updatePosition(oldPosition, newPosition);
-        
-        oldPosition.moveRight();
-        assertEquals("0 1", oldPosition.toString());
+        plateau.updatePosition(new Coordinates(0,0), new Coordinates(1,0));
+
+        Position position = new Position(0, 0, plateau);
+        position.moveRight();
+        assertEquals("0 0", position.toString());
     }
 
     @Test
     public void shouldBlockNewPosition(){
         Position oldPosition = new Position(0, 1, plateau);
-        Position newPosition = new Position(1, 1, plateau);
+        Coordinates newPosition = new Coordinates(1, 1);
         oldPosition.moveRight();
 
         assertTrue(plateau.coordinatesAreBlocked(newPosition));
