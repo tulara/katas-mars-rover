@@ -2,6 +2,7 @@ import org.junit.Test;
 import plateau.Plateau;
 import rover.Position;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 public class PositionTest {
@@ -47,5 +48,24 @@ public class PositionTest {
         position = new Position(0,0, plateau);
         position.moveDown();
         assertEquals("0 0", position.toString());
+    }
+
+    @Test
+    public void shouldNotMoveIfNewPositionIsBlocked(){
+        Position oldPosition = new Position(0, 1, plateau);
+        Position newPosition = new Position(1, 1, plateau);
+        plateau.updatePosition(oldPosition, newPosition);
+        
+        oldPosition.moveRight();
+        assertEquals("0 1", oldPosition.toString());
+    }
+
+    @Test
+    public void shouldBlockNewPosition(){
+        Position oldPosition = new Position(0, 1, plateau);
+        Position newPosition = new Position(1, 1, plateau);
+        oldPosition.moveRight();
+
+        assertTrue(plateau.coordinatesAreBlocked(newPosition));
     }
 }

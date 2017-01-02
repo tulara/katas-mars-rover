@@ -47,7 +47,7 @@ public class MissionControlTest {
         String input = "20 20\r\n0 0 E\r\nMLMRM\r\n0 0 N\r\nMRMM";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         MissionControl.main(new String[]{});
-        assertEquals("2 1 E\r\n1 1 E", output.toString());
+        assertEquals("2 1 E\r\n1 1 E\r\n", output.toString());
     }
 
     @After

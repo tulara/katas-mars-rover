@@ -26,12 +26,12 @@ public class Plateau {
         else return true;
     }
 
-    public void blockPosition(Position newPosition, Position oldPosition){
+    public void updatePosition(Position oldPosition, Position newPosition){
         blockedPositions.remove(oldPosition);
         blockedPositions.add(newPosition);
     }
 
-    public boolean positionIsBlocked(Position position){
+    public boolean coordinatesAreBlocked(Position position){
         return blockedPositions.contains(position);
     }
 }

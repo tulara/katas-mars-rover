@@ -50,3 +50,6 @@ MMRMMRMRRM
 Expected Output:
 1 3 N
 5 1 E
+
+Improvements/Experiments.
+Extract a coordinates class, separate from position class -> if plateau manages position do we still need position?

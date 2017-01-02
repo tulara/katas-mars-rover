@@ -1,4 +1,3 @@
-import javafx.geometry.Pos;
 import org.junit.Before;
 import org.junit.Test;
 import plateau.Plateau;
@@ -34,8 +33,8 @@ public class PlateauTest {
         // passing plateau to position is weird
         Position oldPosition = new Position(0, 1, plateau);
         Position position = new Position(1, 1, plateau);
-        plateau.blockPosition(position, oldPosition);
-        assertTrue(plateau.positionIsBlocked(position));
+        plateau.updatePosition(oldPosition, position);
+        assertTrue(plateau.coordinatesAreBlocked(position));
     }
 
     @Test
@@ -44,7 +43,7 @@ public class PlateauTest {
         Position oldPosition = new Position(0, 1, plateau);
         Position blockedPosition = new Position(1, 1, plateau);
         Position unblockedPosition = new Position(2, 2, plateau);
-        plateau.blockPosition(blockedPosition, oldPosition);
-        assertFalse(plateau.positionIsBlocked(unblockedPosition));
+        plateau.updatePosition(oldPosition,blockedPosition);
+        assertFalse(plateau.coordinatesAreBlocked(unblockedPosition));
     }
 }
