@@ -13,25 +13,27 @@ public class Position {
     }
 
     public void moveUp(){
-        Coordinates intendedPosition = new Coordinates(this.coordinates.getX(), this.coordinates.getY() + 1);
-        this.coordinates = plateau.getNewPosition(this.coordinates, intendedPosition);
+        updateCoordinates(this.coordinates.getX(), this.coordinates.getY() + 1);
     }
 
     public void moveDown(){
-        Coordinates intendedPosition = new Coordinates(this.coordinates.getX(), this.coordinates.getY() - 1);
-        this.coordinates = plateau.getNewPosition(this.coordinates, intendedPosition);
+        updateCoordinates(this.coordinates.getX(), this.coordinates.getY() - 1);
     }
 
     public void moveLeft(){
-        Coordinates intendedPosition = new Coordinates(this.coordinates.getX() - 1, this.coordinates.getY());
-        this.coordinates = plateau.getNewPosition(this.coordinates, intendedPosition);
+        updateCoordinates(this.coordinates.getX() - 1, this.coordinates.getY());
     }
+
 
     public void moveRight(){
-        Coordinates intendedPosition = new Coordinates(this.coordinates.getX() + 1, this.coordinates.getY());
-        this.coordinates = plateau.getNewPosition(this.coordinates, intendedPosition);
+        updateCoordinates(this.coordinates.getX() + 1, this.coordinates.getY());
     }
 
+    private void updateCoordinates(int x, int y) {
+        Coordinates intendedPosition = new Coordinates(x, y);
+        this.coordinates = plateau.getNewPosition(this.coordinates, intendedPosition);
+    }
+    
     @Override
     public String toString(){
         return String.format("%d %d", this.coordinates.getX(), this.coordinates.getY());
